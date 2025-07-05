@@ -1,3 +1,4 @@
 flake8>=3.9.2,<3.10
 # flake8 is a tool for enforcing coding style in Python code.
 
+max-line-length = 85
