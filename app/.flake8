@@ -2,3 +2,4 @@
 # It specifies which files and directories to exclude from the checks.
 [flake8]
 exclude = migrations,tests,venv,.git,__pycache__,staticfiles,media,*.pyc,*.pyo,*.pyd,.vscode
+max-line-length = 95
