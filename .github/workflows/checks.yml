@@ -1,0 +1,27 @@
+---
+name: Checks
+ 
+on: [push]
+ 
+jobs:
+  test-lint:
+    name: Test and Lint
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Checkout
+
+      # This step checks out your repository under $GITHUB_WORKSPACE, so your job can access it
+        # This is necessary to run the tests and linting
+        # It allows the workflow to access the codebase and run commands against it
+        # The 'actions/checkout@v4' action is used to check out the code
+        # The 'v4' version is the latest stable version of the action
+        uses: actions/checkout@v4
+      - name: Test
+        run: docker compose run --rm app sh -c "python manage.py test"
+      - name: Lint
+        run: docker compose run --rm app sh -c "flake8"
