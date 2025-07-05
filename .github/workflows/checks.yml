@@ -17,9 +17,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Test
         run: docker compose run --rm app sh -c "python manage.py test"
-        # This step runs the tests in the application
-        # It uses the `docker compose run` command to run the tests in the app service
-        # The `--rm` flag removes the container after the command is executed
-        # The `sh -c` command is used to run the `python manage.py test
+
       - name: Lint
         run: docker compose run --rm app sh -c "flake8"
